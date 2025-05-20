@@ -58,7 +58,6 @@ _binrec-init:
     pipenv sync --dev
     git submodule update --recursive --init
     git lfs pull
-    ln -sf "{{justdir}}/google.py" "{{justdir}}/s2e/source/s2e-env/s2e_env/utils/google.py"
     ln -sf "{{justdir}}/google.py" "{{justdir}}/s2e-env/s2e_env/utils/google.py"
     cd ./s2e-env && pipenv run pip install .
     pipenv run s2e init {{justdir}}/s2e
