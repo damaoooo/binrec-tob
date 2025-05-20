@@ -58,13 +58,13 @@ _binrec-init:
     pipenv sync --dev
     git submodule update --recursive --init
     git lfs pull
+    ln -sf "{{justdir}}/google.py" "{{justdir}}/s2e/source/s2e-env/s2e_env/utils/google.py"
+    ln -sf "{{justdir}}/google.py" "{{justdir}}/s2e-env/s2e_env/utils/google.py"
     cd ./s2e-env && pipenv run pip install .
     pipenv run s2e init {{justdir}}/s2e
     @just _freeze-s2e
     sed -i 's|git://git.qemu.org|https://gitlab.com/qemu-project|g' "{{justdir}}/s2e/source/qemu/.gitmodules"
     sed -i 's|git://git.qemu-project.org|https://gitlab.com/qemu-project|g' "{{justdir}}/s2e/source/qemu/.gitmodules"
-    ln -sf "{{justdir}}/google.py" "{{justdir}}/s2e/source/s2e-env/s2e_env/utils/google.py"
-    ln -sf "{{justdir}}/google.py" "{{justdir}}/s2e-env/s2e_env/utils/google.py"
     @just s2e-insert-binrec-plugins
 
 # Freeze all S2E repositories to commits that have been tested against
