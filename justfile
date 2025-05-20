@@ -41,6 +41,8 @@ install-binrec: _install-dependencies _binrec-init build-all build-s2e-image bui
 # Install apt packages and git LFS. Required once before build. Requires super user privileges.
 _install-dependencies:
     sudo apt-get update
+    sudo dpkg --add-architecture i386
+    sudo apt-get update
     sudo apt-get install -y bison cmake flex g++ g++-multilib gcc gcc-multilib git libglib2.0-dev enchant-2 python3-enchant liblua5.1-dev \
         libsigc++-2.0-dev lua5.3 nasm nlohmann-json3-dev pkg-config subversion curl pipenv git-lfs doxygen graphviz \
         binutils libc6-dbg:i386 \
